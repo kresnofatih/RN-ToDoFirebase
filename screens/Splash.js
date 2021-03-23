@@ -3,8 +3,11 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableWithoutFeedback } f
 import { colors } from '../Colors'
 import { useFonts } from 'expo-font';
 import { AntDesign } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
+import { getCurrentScreen } from '../features/appSlice';
 
 const Splash = () => {
+    const currentScreen = useSelector(getCurrentScreen);
     let [fontsLoaded] = useFonts({
         'Lato-Light' : require('../assets/fonts/Lato/Lato-Light.ttf'),
         'Lato-Thin' : require('../assets/fonts/Lato/Lato-Thin.ttf'),
@@ -19,7 +22,7 @@ const Splash = () => {
             <Text style={[styles.splashtitle, fontsLoaded && {fontFamily: 'Lato-Light'}]}>ToDoFirebase</Text>
             <Text style={[styles.splashsubtitle, fontsLoaded && {fontFamily: 'Lato-Thin'}]}>Your Favorite To Do List</Text>
             <View style={styles.loginbutton}>
-                <TouchableWithoutFeedback onPress={()=>console.log('login')}>
+                <TouchableWithoutFeedback onPress={()=>console.log('screen: ', currentScreen)}>
                     <AntDesign name="rightcircle" size={30} color={colors.lyellow} />
                 </TouchableWithoutFeedback>
             </View>
