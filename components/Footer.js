@@ -1,9 +1,9 @@
 import React from 'react'
 import { Dimensions, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { colors } from '../Colors'
-import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import AddTaskBtn from './AddTaskBtn';
 
 const Footer = () => {
     return (
@@ -11,11 +11,7 @@ const Footer = () => {
             <View style={styles.sidebtn}>
                 <Ionicons name="person-outline" size={24} color="black" />
             </View>
-            <View style={styles.sidebtn}>
-                <TouchableWithoutFeedback onPress={()=>console.log('add')}>
-                    <AntDesign name="plus" size={24} color={colors.lgray} />
-                </TouchableWithoutFeedback>
-            </View>
+            <AddTaskBtn/>
             <View style={styles.sidebtn}>
                 <Feather name="more-vertical" size={24} color="black" />
             </View>

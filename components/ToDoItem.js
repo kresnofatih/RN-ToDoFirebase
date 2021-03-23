@@ -31,7 +31,6 @@ export default ToDoItem
 
 const styles = StyleSheet.create({
     todoitem: {
-        // backgroundColor: colors.dwhite,
         paddingVertical: 10,
         paddingHorizontal: 15,
         display: 'flex',
@@ -41,6 +40,7 @@ const styles = StyleSheet.create({
     },
     todoitemname: {
         fontSize: 25,
-        marginLeft: 15
+        marginLeft: 15,
+        flex: 1,
     }
 })

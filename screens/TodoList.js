@@ -14,20 +14,24 @@ const TodoList = () => {
     });
     return (
         <View style={styles.todolistcontainer}>
-            <Header/>
-            <FlatList
-                data={tempData}
-                renderItem={({item})=>(
-                    <ToDoItem 
-                        key={item.taskId}
-                        taskId={item.taskId}
-                        taskName={item.taskName}
-                        completeStatus={item.completeStatus}
+            {fontsLoaded &&
+                <>
+                    <Header/>
+                    <FlatList
+                        data={tempData}
+                        renderItem={({item})=>(
+                            <ToDoItem 
+                                key={item.taskId}
+                                taskId={item.taskId}
+                                taskName={item.taskName}
+                                completeStatus={item.completeStatus}
+                            />
+                        )}
+                        keyExtractor={item=>''+item.taskId}
                     />
-                )}
-                keyExtractor={item=>''+item.taskId}
-            />
-            <Footer/>
+                    <Footer/>
+                </>
+            }
         </View>
     )
 }
