@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        position: 'absolute',
         bottom: 0,
         backgroundColor: colors.lyellow
     },
