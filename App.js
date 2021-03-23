@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Splash from './screens/Splash';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>The App is working!</Text>
+      {/* <Text>The App is working!</Text> */}
       <StatusBar style="auto" />
+      <Splash/>
     </View>
   );
 }
