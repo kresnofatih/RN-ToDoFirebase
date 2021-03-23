@@ -12,7 +12,7 @@ const AddTaskBtn = () => {
         'Lato-Thin' : require('../assets/fonts/Lato/Lato-Thin.ttf'),
     });
     const [modalVisible, setModalVisible] = useState(false);
-    const [tempTaskName, setTempTaskName] = useState(true);
+    const [tempTaskName, setTempTaskName] = useState('');
     return (
         <>
         {fontsLoaded &&
@@ -36,6 +36,7 @@ const AddTaskBtn = () => {
                         multiline
                         onChangeText={text=>setTempTaskName(text)}
                         onBlur={()=>{Keyboard.dismiss()}}
+                        value={tempTaskName}
                     />
                 </View>
                 <View style={styles.closebtn}>

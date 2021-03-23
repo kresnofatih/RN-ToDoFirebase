@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../Colors'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 const ToDoItem = ({taskName, taskId, completeStatus}) => {
     let [fontsLoaded] = useFonts({
@@ -11,18 +11,22 @@ const ToDoItem = ({taskName, taskId, completeStatus}) => {
     });
     return (
         <TouchableOpacity>
-            <View style={styles.todoitem}>
-                {completeStatus ?
-                    <> 
-                        <MaterialCommunityIcons name="check-circle-outline" size={35} color={colors.llgray} />
-                    </>
-                :
-                    <>
-                        <MaterialCommunityIcons name="checkbox-blank-circle-outline" size={35} color={colors.llgray}/>
-                    </>
-                }
-                <Text style={[styles.todoitemname, fontsLoaded && {fontFamily: 'Lato-Thin'}]}>{taskName}</Text>
-            </View>
+            {fontsLoaded &&
+                <View style={styles.todoitem}>
+                    {completeStatus ?
+                        <> 
+                            <Ionicons name="checkbox-outline" size={35} color={colors.llgray} />
+                        </>
+                    :
+                        <>
+                            <Ionicons name="square-outline" size={35} color={colors.llgray} />
+                        </>
+                    }
+                    <Text style={[styles.todoitemname, fontsLoaded && {fontFamily: 'Lato-Thin'}]}>
+                        {taskName.length>20 ? taskName.substring(0, 20): taskName}
+                    </Text>
+                </View>
+            }
         </TouchableOpacity>
     )
 }
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection:'row',
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     todoitemname: {
         fontSize: 25,

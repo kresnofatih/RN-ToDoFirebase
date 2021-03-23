@@ -18,6 +18,7 @@ const TodoList = () => {
                 <>
                     <Header/>
                     <FlatList
+                        style={styles.flatitem}
                         data={tempData}
                         renderItem={({item})=>(
                             <ToDoItem 
@@ -45,5 +46,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         width: Dimensions.get('screen').width,
+    },
+    flatitem: {
+        marginTop: 20
     }
 })
