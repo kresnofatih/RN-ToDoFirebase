@@ -20,7 +20,7 @@ const Splash = () => {
             <Text style={[styles.splashsubtitle, fontsLoaded && {fontFamily: 'Lato-Thin'}]}>Your Favorite To Do App</Text>
             <View style={styles.loginbutton}>
                 <TouchableWithoutFeedback onPress={()=>console.log('screen')}>
-                    <AntDesign name="rightcircle" size={30} color={colors.lyellow} />
+                    <AntDesign name="rightcircle" size={35} color={colors.lyellow} />
                 </TouchableWithoutFeedback>
             </View>
         </View>

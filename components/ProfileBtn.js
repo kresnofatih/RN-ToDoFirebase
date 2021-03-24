@@ -6,6 +6,7 @@ import ModalHeader from './ModalHeader';
 import { colors } from '../Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { Avatar, Overlay } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native';
 
 const ProfileBtn = () => {
     let [fontsLoaded] = useFonts({
@@ -17,12 +18,12 @@ const ProfileBtn = () => {
         <>
         {fontsLoaded &&
             <View style={styles.profilebtn}>
-                <TouchableWithoutFeedback onPress={()=>setModalVisible(true)}>
-                    <Ionicons name="person-outline" size={24} color={colors.lgray} />
-                </TouchableWithoutFeedback>
+                <TouchableOpacity onPress={()=>setModalVisible(true)}>
+                    <Ionicons name="person-outline" size={30} color={colors.lgray} />
+                </TouchableOpacity>
             </View>
         }
-        <Overlay isVisible={modalVisible} onBackdropPress={()=>{setModalVisible(false)}}>
+        <Overlay backdropStyle={styles.bdstyle} isVisible={modalVisible} overlayStyle={styles.profileoverlay} onBackdropPress={()=>{setModalVisible(false)}}>
             <Pressable style={styles.addtaskmodal}>
                 <ModalHeader text="Profile"/>
                 <View style={styles.avatarcontainer}>
@@ -38,7 +39,7 @@ const ProfileBtn = () => {
                 <Text style={[styles.displayname, fontsLoaded && {fontFamily: 'Lato-Light'}]}>KresnoFatihImani</Text>
                 <View style={styles.closebtn}>
                     <TouchableWithoutFeedback onPress={()=>setModalVisible(false)}>
-                        <AntDesign name="close" size={24} color={colors.lgray} />
+                        <AntDesign name="close" size={30} color={colors.lgray} />
                     </TouchableWithoutFeedback>
                 </View>
             </Pressable>
@@ -57,16 +58,19 @@ const styles = StyleSheet.create({
     avatarcontainer: {
         marginTop: 20
     },
+    profileoverlay:{
+        padding: 0
+    },
     addtaskmodal: {
-        // width: Dimensions.get('screen').width,
         width: 350,
         backgroundColor: colors.cwhite,
         display: 'flex',
         alignItems: 'center',
+        margin: 0
     },
     closebtn: {
         position: 'absolute',
-        top: 20,
+        top: 15,
         right: 20
     },
     displayname: {
@@ -74,5 +78,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontSize: 20,
         color: colors.dgray
+    },
+    bdstyle: {
+        backgroundColor: 'transparent'
     }
 })

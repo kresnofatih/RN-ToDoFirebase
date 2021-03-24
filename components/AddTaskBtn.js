@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Dimensions, Modal, Pressable, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native'
+import { Dimensions, Modal, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import { colors } from '../Colors'
 import { AntDesign } from '@expo/vector-icons';
 import ModalHeader from './ModalHeader';
@@ -17,9 +17,9 @@ const AddTaskBtn = () => {
         <>
         {fontsLoaded &&
             <View style={styles.addtaskbtn}>
-                <TouchableWithoutFeedback onPress={()=>setModalVisible(true)}>
-                    <AntDesign name="plus" size={24} color={colors.lgray} />
-                </TouchableWithoutFeedback>
+                <TouchableOpacity onPress={()=>setModalVisible(true)}>
+                    <AntDesign name="plus" size={30} color={colors.lgray} />
+                </TouchableOpacity>
             </View>
         }
         <Modal
@@ -37,11 +37,12 @@ const AddTaskBtn = () => {
                         onChangeText={text=>setTempTaskName(text)}
                         onBlur={()=>{Keyboard.dismiss()}}
                         value={tempTaskName}
+                        autoFocus
                     />
                 </View>
                 <View style={styles.closebtn}>
                     <TouchableWithoutFeedback onPress={()=>setModalVisible(false)}>
-                        <AntDesign name="close" size={24} color={colors.lgray} />
+                        <AntDesign name="close" size={30} color={colors.cwhite} />
                     </TouchableWithoutFeedback>
                 </View>
             </Pressable>
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     },
     closebtn: {
         position: 'absolute',
-        top: 20,
+        top: 15,
         right: 20
     },
     inputfield: {

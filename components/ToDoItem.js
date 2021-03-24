@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../Colors'
 import { useFonts } from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 const ToDoItem = ({taskName, taskId, completeStatus}) => {
     let [fontsLoaded] = useFonts({
@@ -13,18 +14,21 @@ const ToDoItem = ({taskName, taskId, completeStatus}) => {
         <TouchableOpacity>
             {fontsLoaded &&
                 <View style={styles.todoitem}>
-                    {completeStatus ?
-                        <> 
-                            <Ionicons name="checkbox-outline" size={35} color={colors.llgray} />
-                        </>
-                    :
-                        <>
-                            <Ionicons name="square-outline" size={35} color={colors.llgray} />
-                        </>
-                    }
-                    <Text style={[styles.todoitemname, fontsLoaded && {fontFamily: 'Lato-Thin'}]}>
-                        {taskName.length>20 ? taskName.substring(0, 20): taskName}
-                    </Text>
+                    <View style={styles.spaceview}>
+                        <Text style={[styles.todoitemname, fontsLoaded && {fontFamily: 'Lato-Thin'}]}>
+                            {taskName.length>20 ? taskName.substring(0, 20): taskName}
+                        </Text>
+                        {completeStatus ?
+                            <> 
+                                <Ionicons name="checkbox-outline" size={35} color={colors.llgray} />
+                            </>
+                        :
+                            <>
+                                <Ionicons name="square-outline" size={35} color={colors.llgray} />
+                            </>
+                        }
+                    </View>
+                    <FontAwesome name="trash-o" size={35} color={colors.llgray} />
                 </View>
             }
         </TouchableOpacity>
@@ -35,8 +39,8 @@ export default ToDoItem
 
 const styles = StyleSheet.create({
     todoitem: {
-        paddingVertical: 10,
-        paddingHorizontal: 15,
+        paddingVertical: 15,
+        paddingHorizontal: 25,
         display: 'flex',
         flexDirection:'row',
         justifyContent: 'flex-start',
@@ -44,7 +48,15 @@ const styles = StyleSheet.create({
     },
     todoitemname: {
         fontSize: 25,
-        marginLeft: 15,
+        // marginLeft: 15,
+        // flex: 1,
+    },
+    spaceview: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         flex: 1,
+        marginRight: 15
     }
 })

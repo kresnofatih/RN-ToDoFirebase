@@ -4,6 +4,7 @@ export const appSlice = createSlice({
     name: 'app',
     initialState: {
         screen: 'todolist'
+        // screen: 'splash'
     },
     reducers: {
         openScreen: (state, action)=>{
